@@ -16,4 +16,5 @@ function authRequired(req, res, next){
 
 module.exports = { authRequired};
 
-//ESSE
+// O split é para pegar somente o token e nao o bearer
+// mandar a requisição continuar para a próxima função
