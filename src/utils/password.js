@@ -19,4 +19,4 @@ module.exports = {hashPassword, comparePassword};
 
 // o 10 serve para definir a força da criptografia quanto maior mais lenta 
 
-// Salt é um valor aleatório que é adicionado à senha antes de criptografar, pq se criarem duas senhas iguais a criptografia nao vai ficar igual 
+// Salt é um valor aleatório que é adicionado à senha antes de criptografar, pq se criarem duas senhas iguais a criptografia nao vai ficar igual no meu codigo tem o salt mas ele esta junto dessa linha aq return bcrypt.hash(password, 10) o 10 sao 10 salt rounds
