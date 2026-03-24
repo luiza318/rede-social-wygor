@@ -20,9 +20,5 @@ async function findById(id) {
 
 module.exports = {findByEmail, createUser, findById};
 
-/* O hash transforma a senha em um código seguro antes de salvar no banco de dados, para proteger a senha do usuário.
-Esse código possui três funções.
-A primeira (findByEmail) busca um usuário pelo email no banco de dados e retorna o resultado encontrado, sendo usada principalmente para verificar se o email já está cadastrado.
-A segunda (createUser) cria um novo usuário no banco com nome, email e senha criptografada, e retorna o id do usuário criado.
-A terceira (findById) busca um usuário no banco de dados utilizando seu id. */
+
 

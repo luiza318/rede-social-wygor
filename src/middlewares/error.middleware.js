@@ -7,9 +7,3 @@ function errorHandler(err, req, res, next){
 
 module.exports = {errorHandler};
 
-/* 
-Código utilizado para identificar e tratar os erros da aplicação.
-Ele usa o err.status para retornar o código do erro.
-Se o erro não tiver um status definido, utiliza o código 500,
-que representa erro interno do servidor.
-*/

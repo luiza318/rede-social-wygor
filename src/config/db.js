@@ -9,4 +9,3 @@ const pool = mysql.createPool({
 
 module.exports = pool; 
 
-// O createPool() reutiliza conexões em vez de criar uma nova a cada requisição ao banco de dados, deixando a aplicação mais eficiente e estável
