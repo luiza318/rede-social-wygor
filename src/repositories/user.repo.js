@@ -18,7 +18,14 @@ async function findById(id) {
     return rows[0]
 }
 
-module.exports = {findByEmail, createUser, findById};
+async function userUpdate(id, name, email, password_hash) {
+    await db.query(
+        "UPDATE users SET name = ?, email = ?, password_hash = ? WHERE id = ?",
+        [name, email, password_hash, id]
+    );
+}
+
+module.exports = {findByEmail, createUser, findById, userUpdate};
 
 
 

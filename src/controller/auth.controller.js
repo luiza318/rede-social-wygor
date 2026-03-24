@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { hashPassword, comparePassword } = require("../utils/password");
+const { hashPassword, comparePassword } = require("../validations/password");
 const repo = require("../repositories/user.repo");
 
 async function register(req, res, next) {
