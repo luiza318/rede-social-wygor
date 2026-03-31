@@ -1,17 +1,26 @@
-const repo = require ("../repositories/post.repo");
+const {insertPost, findById} = require('../repositories/post.repo');
+const { hashPassword } = require('../validations/password');
 
-function createPost (req, res){
+function createPost(req, res) {
     let body = req.body;
-    repo.insertPost(body)
+    insertPost(body);
+    res.send('Postagem cadastrada')
 }
 
-module.exports = {createPost}
+async function listarPost(req, res, next){
+    try{
+        const { id } = req.params;
+        const post = await findById(id);
+        res.json(post);
+    } catch (e) {next (e)}
+}
 
-/*{
-    "conteudo": 1,
-    "descripition" : "descrição do post",
-    "midia" : [
-        {"url" : "/midia/img/image1.jpg"},
-        {"url" : "/midia/video/video1.mp4"}
-    ]
+/*async function atualizarPost(req, res, next) {
+    try{
+        const {conteudo} = req.body;
+        const password_hash = await hashPassword(password);
+        await
+    }
 }*/
+
+module.exports = {createPost, listarPost}

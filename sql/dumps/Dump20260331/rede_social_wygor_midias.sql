@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
--- Host: localhost    Database: redes-socias-db
+-- Host: localhost    Database: rede_social_wygor
 -- ------------------------------------------------------
 -- Server version	8.4.3
 
@@ -16,30 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `midias`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `midias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `midias` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) NOT NULL,
-  `email` varchar(190) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
+  `post_id` bigint NOT NULL,
+  `url` varchar(250) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_midias_posts` (`post_id`),
+  CONSTRAINT `fk_midias_posts` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `midias`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'maria','maria@email.com','$2b$10$w9KF0j8xI4fCJRrBmrBjMOywmQhauPSpATHahEie0fiQl1Ypo884W');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `midias` WRITE;
+/*!40000 ALTER TABLE `midias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `midias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-30 11:14:52
+-- Dump completed on 2026-03-31 11:08:46
