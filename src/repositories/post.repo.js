@@ -33,7 +33,21 @@ async function findById(id) {
     return rows [0]
 }
 
-module.exports = {insertPost, findById}
+async function updatePost( id ,conteudo, midia) {
+    const [rows] = await db.query("UPDATE posts set conteudo = ? where id = ?", [conteudo, id]);
+
+     await db.query(
+        "DELETE FROM midias WHERE post_id = ?",
+        [id]
+    );
+     if (midia && midia.length > 0) {
+    for (let m of midia) {
+        await insertMidia(id, m.url);
+    }
+}
+}
+
+module.exports = {insertPost, findById, updatePost}
 
 
 

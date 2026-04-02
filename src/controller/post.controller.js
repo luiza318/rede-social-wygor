@@ -1,5 +1,4 @@
-const {insertPost, findById} = require('../repositories/post.repo');
-const { hashPassword } = require('../validations/password');
+const {insertPost, findById, updatePost} = require('../repositories/post.repo');
 
 function createPost(req, res) {
     let body = req.body;
@@ -15,12 +14,14 @@ async function listarPost(req, res, next){
     } catch (e) {next (e)}
 }
 
-/*async function atualizarPost(req, res, next) {
+async function atualizarPost(req, res, next) {
     try{
-        const {conteudo} = req.body;
-        const password_hash = await hashPassword(password);
-        await
-    }
-}*/
+        const { id } = req.params;
+        const {conteudo, midia} = req.body;
+        await updatePost(id, conteudo, midia);
+        const post = await findById(id);
+        res.json(post);
+    } catch (e) { next (e)}
+}
 
-module.exports = {createPost, listarPost}
+module.exports = {createPost, listarPost, atualizarPost}
